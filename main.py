@@ -1,4 +1,5 @@
 import time
+import os.path
 from pyrogram import Client
 from pyrogram.types import InputMediaPhoto
 from scrapper import scrapper
@@ -30,7 +31,14 @@ async def main(user, send_time):
 
 
 if __name__ == '__main__':
-    input_data = input('Введи никнейм пользователя, его номер телефона или ID в следующих форматах: \n'
-                       '@user_name\n79008007060\n0123456789\n')
-    input_time = input('Введите время отправки поздравления в формате: 09:00\n')
-    app.run(main(input_data, input_time))
+    if os.path.isfile('my_account.session'):
+        input_data = input('Введи никнейм пользователя, его номер телефона или ID в следующих форматах: \n'
+                           '@user_name\n79008007060\n0123456789\n')
+        input_time = input('Введите время отправки поздравления в формате: 09:00\n')
+        app.run(main(input_data, input_time))
+    else:
+        print('Нужно провести авторизацию!')
+        api_id = int(input('Введите api ID: \n'))
+        api_hash = input('Введите api HASH: \n')
+        app = Client("my_account", api_id=api_id, api_hash=api_hash)
+        app.run()
