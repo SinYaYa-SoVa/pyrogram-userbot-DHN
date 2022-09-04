@@ -43,8 +43,16 @@ A pyrogram userbot
 <a name="Подготовка"/>
 
 1. Переходим на сайт `my.telegram.org/auth` и авторизируемся.
+
+<img src="https://github.com/SinYaYa-SoVa/pyrogram-userbot-DHN/blob/main/res/s1.png?raw=true" alt=getready1>
+
 2. Переходим на страницу `API development tools` и создаем любое приложение. **ВАЖНО!** Если приложение не создается, попробуйте создать его из браузера с телефона.
+
+<img src="https://github.com/SinYaYa-SoVa/pyrogram-userbot-DHN/blob/main/res/s2.png?raw=true" alt=getready2>
+
 3. После создания копируем значения из `App api_id` и `App api_hash`.
+
+<img src="https://github.com/SinYaYa-SoVa/pyrogram-userbot-DHN/blob/main/res/s3.png?raw=true" alt=getready3>
 
 ### Установка и использование
 <a name="Установка"/>
@@ -52,7 +60,7 @@ A pyrogram userbot
 0. Создаем папку для бота. В ней будут храниться все нужные файлы для работы бота.
 1. Скачиваем [Daily Holiday Notifier.exe](https://github.com/SinYaYa-SoVa/pyrogram-userbot-DHN/releases/download/v0.1/Daily.Holiday.Notifier.exe).
 2. Запускаем скаченный файл.
-3. Проходим авторизацию (при помощи файлов `App api_id` и `App api_hash`).
+3. Проходим авторизацию (при помощи значений `App api_id` и `App api_hash`, которые скопировали).
 4. Вводим **СВОЙ** номер телефона.
 5. Заново запускаем файл.
 6. Выбираем пункт меню под номером один (1).
