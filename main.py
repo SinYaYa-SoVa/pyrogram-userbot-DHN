@@ -5,7 +5,7 @@ from pyrogram.types import InputMediaPhoto
 from scrapper import scrapper
 from datetime import datetime
 
-version = 0.1
+version = 0.11
 
 app = Client("my_account")
 
@@ -19,23 +19,30 @@ async def first_launch():
 async def main(user, send_time):
     async with app:
         print('[{}] Ожидание отправки сообщения...'.format(datetime.now().time()))
+        print('Сообщение будет отправлено пользователю {} в {}'.format(user, send_time))
+        now_time = datetime.now().time()
+        time_ = str(now_time).split('.')
+        time_ = time_[0]
+        time_ = str(time_).split(':')
+        time_.pop(2)
+        time_ = ':'.join(time_)
+        time_1 = datetime.strptime(time_, "%H:%M")
+        time_2 = datetime.strptime(send_time, "%H:%M")
+        wait_time = time_2 - time_1
+        wait_time = int(wait_time.total_seconds())
+        print('До отправки сообщения ', (wait_time // 60) // 60, ' (часы) ', (wait_time // 60) % 60,
+              ' (минуты)')
+        time.sleep(wait_time)
         while True:
-            now_time = datetime.now().time()
-            time_ = str(now_time).split('.')
-            time_ = time_[0]
-            time_ = str(time_).split(':')
-            time_.pop(2)
-            time_ = ':'.join(time_)
-
-            if send_time == time_:
-                text, image = scrapper()
-                text = 'Ура! Сегодня**{}**! Поздравляю тебя!'.format(text.lower())
-                await app.send_media_group(user, [
-                    InputMediaPhoto('picture.jpg', caption=text)
-                ])
-                print('[{}] Сообщение отправлено!'.format(now_time))
-                print('[{}] Ожидание отправки сообщения...'.format(now_time))
-                time.sleep(86390)
+            text, image = scrapper()
+            text = 'Ура! Сегодня**{}**! Поздравляю тебя!'.format(text.lower())
+            await app.send_media_group(user, [
+                InputMediaPhoto('picture.jpg', caption=text)
+            ])
+            print('[{}] Сообщение отправлено!'.format(now_time))
+            print('[{}] Ожидание отправки сообщения...'.format(now_time))
+            print('До отправки сообщения 24 часа')
+            time.sleep(86396)
 
 
 if __name__ == '__main__':
