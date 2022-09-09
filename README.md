@@ -58,7 +58,7 @@ A pyrogram userbot
 <a name="Установка"/>
 
 0. Создаем папку для бота. В ней будут храниться все нужные файлы для работы бота.
-1. Скачиваем [Daily Holiday Notifier.exe](https://github.com/SinYaYa-SoVa/pyrogram-userbot-DHN/releases/download/v0.1/Daily.Holiday.Notifier.exe).
+1. Скачиваем актуальный [Daily Holiday Notifier.exe](https://github.com/SinYaYa-SoVa/pyrogram-userbot-DHN/releases).
 2. Запускаем скаченный файл.
 3. Проходим авторизацию (при помощи значений `App api_id` и `App api_hash`, которые скопировали).
 4. Вводим **СВОЙ** номер телефона.
