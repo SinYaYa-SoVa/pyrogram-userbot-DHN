@@ -1,10 +1,11 @@
 import time
 import os.path
 import os
+import datetime as dt
 from pyrogram import Client
 from pyrogram.types import InputMediaPhoto
 from scrapper import scrapper
-from datetime import datetime
+# from datetime import datetime
 
 version = 0.11
 
@@ -19,18 +20,22 @@ async def first_launch():
 
 async def main(user, send_time):
     async with app:
-        print('[{}] Ожидание отправки сообщения...'.format(datetime.now().time()))
+        print('[{}] Ожидание отправки сообщения...'.format(dt.datetime.now().time()))
         print('Сообщение будет отправлено пользователю {} в {}'.format(user, send_time))
-        now_time = datetime.now().time()
+        now_time = dt.datetime.now().time()
         time_ = str(now_time).split('.')
         time_ = time_[0]
         time_ = str(time_).split(':')
         time_.pop(2)
         time_ = ':'.join(time_)
-        time_1 = datetime.strptime(time_, "%H:%M")
-        time_2 = datetime.strptime(send_time, "%H:%M")
-        wait_time = time_2 - time_1
-        wait_time = int(wait_time.total_seconds())
+        time_1 = dt.datetime.strptime(time_, "%H:%M") - dt.datetime(1900, 1, 1)
+        time_2 = dt.datetime.strptime(send_time, "%H:%M") - dt.datetime(1900, 1, 1)
+
+        if int(send_time[:2]) < int(time_[:2]):
+            wait_time = (86400 - int(time_1.total_seconds())) + int(time_2.total_seconds())
+        else:
+            wait_time = int(time_2.total_seconds()) - int(time_1.total_seconds())
+
         print('До отправки сообщения ', (wait_time // 60) // 60, ' (часы) ', (wait_time // 60) % 60,
               ' (минуты)')
         time.sleep(wait_time)
