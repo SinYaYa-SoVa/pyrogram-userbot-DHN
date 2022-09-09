@@ -1,5 +1,6 @@
 import time
 import os.path
+import os
 from pyrogram import Client
 from pyrogram.types import InputMediaPhoto
 from scrapper import scrapper
@@ -47,7 +48,7 @@ async def main(user, send_time):
 
 if __name__ == '__main__':
     def clear():
-        print('\n' * 47)
+        os.system('cls')
 
 
     def get_data():
